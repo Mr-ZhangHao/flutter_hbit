@@ -1,0 +1,6 @@
+framework module loading_indicator_view {
+  umbrella header "loading_indicator_view-umbrella.h"
+
+  export *
+  module * { export * }
+}

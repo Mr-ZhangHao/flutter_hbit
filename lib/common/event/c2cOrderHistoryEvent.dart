@@ -1,0 +1,3 @@
+class c2cOrderHistoryEvent{
+
+}

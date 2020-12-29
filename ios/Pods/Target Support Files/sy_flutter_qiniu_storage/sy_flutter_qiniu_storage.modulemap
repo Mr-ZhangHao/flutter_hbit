@@ -1,0 +1,6 @@
+framework module sy_flutter_qiniu_storage {
+  umbrella header "sy_flutter_qiniu_storage-umbrella.h"
+
+  export *
+  module * { export * }
+}

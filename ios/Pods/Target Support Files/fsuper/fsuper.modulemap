@@ -1,0 +1,6 @@
+framework module fsuper {
+  umbrella header "fsuper-umbrella.h"
+
+  export *
+  module * { export * }
+}

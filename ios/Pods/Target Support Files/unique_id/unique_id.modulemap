@@ -1,0 +1,6 @@
+framework module unique_id {
+  umbrella header "unique_id-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module flutter_seekbar {
+  umbrella header "flutter_seekbar-umbrella.h"
+
+  export *
+  module * { export * }
+}
