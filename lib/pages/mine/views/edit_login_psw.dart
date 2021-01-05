@@ -214,17 +214,17 @@ class _EditLoginPswPageState extends State<EditLoginPswPage> {
         isError = true;
         errorText = Tr.of(context).PhoneCodeHint;
       });
-    } else if ((tfaType == 2 || tfaType == 4 || tfaType == 5 || tfaType == 6) && _ecodeCtr.text.isEmpty) {
+    } else if ((tfaType == 2 || tfaType == 4 ) && _ecodeCtr.text.isEmpty) {
       setState(() {
         isError = true;
         errorText = Tr.of(context).EmailCodeHint;
       });
-    } else if ((tfaType == 3 || tfaType == 4 || tfaType == 5 || tfaType == 7) && _gcodeCtr.text.isEmpty) {
+    } else if ((tfaType == 7 ) && _gcodeCtr.text.isEmpty) {
       setState(() {
         isError = true;
         errorText = Tr.of(context).GoogleCodeHint;
       });
-    } else {
+    }  else {
       setState(() {
         isLoading = false;
         isError = false;

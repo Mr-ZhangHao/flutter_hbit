@@ -19,15 +19,15 @@ import 'package:HBit/core/network/api.dart';
 
 class GlobalConfig {
   ///当前版本号和版本名称，由于ios打tf包只能用1.0版本，所以升级判断要用自己的配置文件
-  static int andVersionCode = 102;
-  static String andVersionName = '1.0.2';
-  static int iosVersionCode = 102;
-  static String iosVersionName = '1.0.2';
+  static int andVersionCode = 104;
+  static String andVersionName = '1.0.4';
+  static int iosVersionCode = 104;
+  static String iosVersionName = '1.0.4';
   static bool isTimer = true;
 
   ///当前版本号和版本名称，由于ios打tf包只能用1.0版本，所以升级判断要用自己的配置文件
-  static int versionCode = 102;
-  static String versionName = '1.0.2';
+  static int versionCode = 104;
+  static String versionName = '1.0.4';
 
   //aes加密得key
   static String aesKey = 'GmtWrMXg6ruVzJ1oCRQY9g==';

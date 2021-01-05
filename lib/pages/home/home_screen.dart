@@ -52,10 +52,24 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   void dispose() {
     super.dispose();
-    timer?.cancel();
-    _scrollViewController.dispose();
-    _tabController.dispose();
-    _refreshController.dispose();
+    if(timer!=null){
+      timer?.cancel();
+
+    }
+
+    if(_scrollViewController!=null){
+      _scrollViewController.dispose();
+
+    }
+    if(_tabController!=null){
+      _tabController.dispose();
+
+    }
+    if(_refreshController!=null){
+      _refreshController.dispose();
+
+
+    }
 
 
   }

@@ -21,6 +21,7 @@ import 'package:HBit/pages/mine/provider/mine_provider.dart';
 import 'package:HBit/pages/mine/server/index.dart';
 import 'package:HBit/routes/fluro_navigator.dart';
 import 'package:HBit/utils/screen.dart';
+import 'package:HBit/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -187,7 +188,9 @@ class _BindEmailPageState extends State<BindEmailPage> {
     if (_emailCtr.text.isEmpty) {
       Toast.showText(Tr.of(context).emailInputHint);
       return Future.value(false);
-    } else {
+    } /* else if(!Utils.isEmail(_emailCtr.text)){
+      Toast.showText(Tr.of(context).emailInputHint);
+    }*/else {
       try {
         if (type == 'sms') {
           await LoginServer.sms('', _emailCtr.text);

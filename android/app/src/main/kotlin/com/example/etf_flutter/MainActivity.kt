@@ -1,4 +1,4 @@
-package com.hbitex.hbit_flutter
+package com.hbitex.hbitflutter
 
 import io.flutter.embedding.android.FlutterActivity
 

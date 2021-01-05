@@ -20,6 +20,7 @@ import 'package:HBit/pages/login/widgets/text_input.dart';
 import 'package:HBit/routes/fluro_navigator.dart';
 import 'package:HBit/routes/routes.dart';
 import 'package:HBit/utils/screen.dart';
+import 'package:HBit/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/style.dart';
 
@@ -110,6 +111,18 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
   final _inveteCodeCtr = TextEditingController();
   final FocusNode _inveteCodeFocus = FocusNode();
 
+  final _nameCtr2 = TextEditingController();
+  final FocusNode _nameFocus2 = FocusNode();
+  final _codeCtr2 = TextEditingController();
+  final FocusNode _codeFocus2 = FocusNode();
+  final _psw1Ctr2 = TextEditingController();
+  final FocusNode _psw1Focus2 = FocusNode();
+  final _psw2Ctr2 = TextEditingController();
+  final FocusNode _psw2Focus2 = FocusNode();
+  final _inveteCodeCtr2 = TextEditingController();
+  final FocusNode _inveteCodeFocus2 = FocusNode();
+
+
   bool isopen = false;
   bool checked = false;
 
@@ -145,9 +158,9 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
           ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: width(47)),
-            decoration: BoxDecoration(
+          /*  decoration: BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(width: 0.5, color: Colors.grey[400]))),
+                    bottom: BorderSide(width: 0.5, color: Colors.grey[400]))),*/
             child: TabBar(
               labelColor: kPrimaryColor,
               unselectedLabelColor: kTextColor6,
@@ -252,6 +265,7 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                       child: FocusWidget(
                         focusNode: _nameFocus,
                         child: InputWidget(
+                          keyboardType: TextInputType.phone,
                           prefixIconConstraintsMaxHeight: 28,
                           prefixIconConstraintsMaxWidth: 100,
                           prefixIconConstraintsMinHeight: 28,
@@ -277,7 +291,8 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                           hintText: Tr.of(context).codeInputHint,
                           getVCode: () async {
                             if (_nameCtr.text.isEmpty) {
-                              return Toast.showText(Tr.of(context).loginAccountHint);
+                              Toast.close();
+                              return Toast.showText(Tr.of(context).phoneInputHint);
                             }else{
                               return await getVcode('sms');
                             }
@@ -415,8 +430,9 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: width(46)),
                       child: FocusWidget(
-                        focusNode: _nameFocus,
+                        focusNode: _nameFocus2,
                         child: InputWidget(
+                          keyboardType: TextInputType.emailAddress,
                           prefixIconConstraintsMaxHeight: 28,
                           prefixIconConstraintsMaxWidth: 100,
                           prefixIconConstraintsMinHeight: 28,
@@ -425,10 +441,10 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                               AssetImage('images/login/zh.png'),
                               color: Color(0xffBFBFBF)),
                           maxHeight: 100,
-                          controller: _nameCtr,
-                          focusNode: _nameFocus,
+
+                          controller: _nameCtr2,
+                          focusNode: _nameFocus2,
                           hintText: Tr.of(context).emailInputHint,
-                          hintStyle: TextStyle(fontSize: sp(28)),
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: width(20)),
                         ),
@@ -437,17 +453,20 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: width(46)),
                       child: FocusWidget(
-                        focusNode: _codeFocus,
+                        focusNode: _codeFocus2,
                         child: InputWidget(
                           obscureText: false,
-                          controller: _codeCtr,
-                          focusNode: _codeFocus,
+                          controller: _codeCtr2,
+                          focusNode: _codeFocus2,
                           hintText: Tr.of(context).codeInputHint,
                           getVCode: () async {
 
-                            if (_nameCtr.text.isEmpty) {
-                              return Toast.showText(Tr.of(context).loginAccountHint);
-                            }else{
+                            if (_nameCtr2.text.isEmpty) {
+                              Toast.close();
+                              return Toast.showText(Tr.of(context).emailInputHint);
+                            }/* else if(!Utils.isEmail(_nameCtr2.text)){
+                              return  Toast.showText(Tr.of(context).emailInputHint);
+                            }*/else{
                               return await getVcode('email');
                             }
 
@@ -472,11 +491,11 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: width(46)),
                       child: FocusWidget(
-                        focusNode: _psw1Focus,
+                        focusNode: _psw1Focus2,
                         child: InputWidget(
                           obscureText: !isopen,
-                          controller: _psw1Ctr,
-                          focusNode: _psw1Focus,
+                          controller: _psw1Ctr2,
+                          focusNode: _psw1Focus2,
                           hintText: Tr.of(context).loginPwdHint,
                           prefixIconConstraintsMaxHeight: 28,
                           prefixIconConstraintsMaxWidth: 100,
@@ -508,11 +527,11 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: width(46)),
                       child: FocusWidget(
-                        focusNode: _psw2Focus,
+                        focusNode: _psw2Focus2,
                         child: InputWidget(
                           obscureText: !isopen,
-                          controller: _psw2Ctr,
-                          focusNode: _psw2Focus,
+                          controller: _psw2Ctr2,
+                          focusNode: _psw2Focus2,
                           hintText: Tr.of(context).registrationConfirmPassword,
                           prefixIconConstraintsMaxHeight: 28,
                           prefixIconConstraintsMaxWidth: 100,
@@ -541,7 +560,7 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: width(46)),
                       child: FocusWidget(
-                        focusNode: _inveteCodeFocus,
+                        focusNode: _inveteCodeFocus2,
                         child: InputWidget(
                           prefixIconConstraintsMaxHeight: 28,
                           prefixIconConstraintsMaxWidth: 100,
@@ -551,8 +570,8 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
                               AssetImage('images/login/yqm.png'),
                               color: Color(0xffBFBFBF)),
                           maxHeight: 100,
-                          controller: _inveteCodeCtr,
-                          focusNode: _inveteCodeFocus,
+                          controller: _inveteCodeCtr2,
+                          focusNode: _inveteCodeFocus2,
                           hintText: Tr.of(context).invitationCodeInputHint,
                         ),
                       ),
@@ -584,7 +603,14 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
           ),
           SizedBox(height: height(20)),
           InkWell(
-            onTap: register,
+            onTap: (){
+              if (_tabController.index == 0) {
+                register();
+
+              } else {
+                register2();
+              }
+            },
             child: Container(
               width: double.infinity,
               height: height(88),
@@ -604,28 +630,23 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
   }
 
   Future<bool> getVcode(type) async {
-    if (_nameCtr.text.isEmpty) {
-      Toast.showText(Tr.of(context).loginAccountHint);
-      return Future.value(false);
-    } else {
-      try {
-        if (type == 'sms') {
-          await LoginServer.sms('${area}', _nameCtr.text);
-          return Future.value(true);
-        } else {
-          await LoginServer.email(_nameCtr.text);
-          return Future.value(true);
-        }
-      } catch (e) {
-        print(e);
-        return Future.value(false);
+    try {
+      if (type == 'sms') {
+        await LoginServer.sms('${area}', _nameCtr.text);
+        return Future.value(true);
+      } else {
+        await LoginServer.email(_nameCtr2.text);
+        return Future.value(true);
       }
+    } catch (e) {
+      print(e);
+      return Future.value(false);
     }
   }
 
   void register() async {
     if (_nameCtr.text.isEmpty) {
-      Toast.showText(Tr.of(context).loginAccountHint);
+      Toast.showText(Tr.of(context).phoneInputHint);
     } else if (_codeCtr.text.isEmpty) {
       Toast.showText(Tr.of(context).codeInputHint);
     } else if (_psw1Ctr.text.isEmpty) {
@@ -641,13 +662,8 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
     } else {
       Toast.showLoading('loading');
       try {
-        if (_tabController.index == 0) {
-          await LoginServer.registerMobile('${area}', _nameCtr.text, _codeCtr.text,
-              _psw1Ctr.text, _inveteCodeCtr.text);
-        } else {
-          await LoginServer.registerEmail(
-              _nameCtr.text, _codeCtr.text, _psw1Ctr.text, _inveteCodeCtr.text);
-        }
+        await LoginServer.registerMobile('${area}', _nameCtr.text, _codeCtr.text,
+            _psw1Ctr.text, _inveteCodeCtr.text);
         _nameCtr.text = '';
         _codeCtr.text = '';
         _psw1Ctr.text = '';
@@ -660,4 +676,40 @@ class _RegisterFromWidgetState extends State<RegisterFromWidget>
       }
     }
   }
+
+void register2() async {
+  if (_nameCtr2.text.isEmpty) {
+    Toast.showText(Tr.of(context).emailInputHint);
+  } /*else if(!Utils.isEmail(_nameCtr2.text)){
+    return  Toast.showText(Tr.of(context).emailInputHint);
+  }*/else if (_codeCtr2.text.isEmpty) {
+    Toast.showText(Tr.of(context).codeInputHint);
+  } else if (_psw1Ctr2.text.isEmpty) {
+    Toast.showText(Tr.of(context).PasswordEmptyHint);
+  } else if (_psw2Ctr2.text.isEmpty) {
+    Toast.showText(Tr.of(context).confirmPasswordHint);
+  } else if (_psw1Ctr2.text != _psw2Ctr2.text) {
+    Toast.showText(Tr.of(context).passwordHint2);
+  }  else if (_inveteCodeCtr2.text .isEmpty) {
+    Toast.showText(Tr.of(context).InvitationCodeHint);
+  } else if (!checked) {
+    Toast.showText(Tr.of(context).termsHint);
+  } else {
+    Toast.showLoading('loading');
+    try {
+
+      await LoginServer.registerEmail(
+          _nameCtr2.text, _codeCtr2.text, _psw1Ctr2.text, _inveteCodeCtr2.text);
+      _nameCtr2.text = '';
+      _codeCtr2.text = '';
+      _psw1Ctr2.text = '';
+      _psw2Ctr2.text = '';
+      _inveteCodeCtr2.text = '';
+      Toast.showSuccess(Tr.of(context).registrationSuccess);
+      Routers.push(context, Routes.login, clearStack: true, replace: true);
+    } catch (e) {
+      print(1);
+    }
+  }
+}
 }

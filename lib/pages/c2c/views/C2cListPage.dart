@@ -3,6 +3,7 @@ import 'package:HBit/common/i18n/i18n.dart';
 import 'package:HBit/common/refresh/page_list.dart';
 import 'package:HBit/common/toast/index.dart';
 import 'package:HBit/constants/index.dart';
+import 'package:HBit/pages/c2c/model/BankBindDetail_model.dart';
 import 'package:HBit/pages/c2c/model/C2cCurrency_model.dart';
 import 'package:HBit/pages/c2c/model/C2cList_model.dart';
 import 'package:HBit/pages/c2c/routes/index.dart';
@@ -254,7 +255,8 @@ class _C2cListPageState extends PageListState<C2cListModel, C2cListPage> {
                               fontSize: sp(28), color: Color(0xffffffff))),
                     ),
                     onTap: () {
-                      if(Provider.of<C2cProvider>(context, listen: false).bankBindDetailModel.length==0){
+                      List<BankBindDetailModel> bankBindDetailModel= Provider.of<C2cProvider>(context, listen: false).bankBindDetailModel;
+                      if(bankBindDetailModel==null||bankBindDetailModel.length==0){
                         showDialog(
                             context: context,
                             builder: (context) {

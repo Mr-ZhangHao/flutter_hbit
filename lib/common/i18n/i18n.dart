@@ -1455,7 +1455,7 @@ class Tr {
       'tradr Buy and Sell': 'BuyAndSell',
       'tradr Limit Price': ' Limit Price',
       'tradr Market Price': 'Market Price',
-      'tradr Best': 'Current best price',
+      'tradr best': 'Current best price',
       'tradr Available': 'Available',
       'tradr Amount': ' Trading volume',
       'tradr Price Hint': 'Price',
@@ -3704,7 +3704,7 @@ class Tr {
   }
 
   get TradrBest {
-    return _localizedValues[localProvider.locale.countryCode]['tradr Best'];
+    return _localizedValues[localProvider.locale.countryCode]['tradr best'];
   }
 
   get tradrAvailable {

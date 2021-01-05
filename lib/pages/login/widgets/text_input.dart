@@ -120,7 +120,7 @@ class _InputWidgetState extends State<InputWidget> {
       _seconds--;
       _isAvailableGetVCode = false;
       // print(_seconds);
-      _verifyStr = Tr.of(context).sent+'${_seconds}s';
+      _verifyStr = '${Tr.of(context).sent} ${_seconds}s';
       if (_seconds == 0) {
         _verifyStr = Tr.of(context).Reacquire;
         _isAvailableGetVCode = true;
@@ -212,11 +212,11 @@ class _InputWidgetState extends State<InputWidget> {
                   textColor: _isAvailableGetVCode ? kPrimaryColor : kDividerColor,
                   onPressed: _seconds == widget.countdown
                       ? () async {
-                          Toast.showLoading('loading...');
-                          if (await widget.getVCode()) {
-                            Toast.close();
-                            _startTimer();
-                          }
+                  Toast.showLoading('loading...');
+                    if (await widget.getVCode()) {
+                   Toast.close();
+                      _startTimer();
+                    }
                         }
                       : null,
                   text: _verifyStr,

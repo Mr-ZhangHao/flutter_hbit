@@ -244,16 +244,16 @@ class _BindGooglePageState extends State<BindGooglePage> {
     MineProvider model = Provider.of<MineProvider>(context, listen: false);
     int tfaType = model.userInfo.tfaType;
     String googleSecret = model.googleSecret;
-    if ((tfaType == 1 || tfaType == 3 || tfaType == 5 || tfaType == 6) && _codeCtr.text.isEmpty) {
-      setState(() {
-        isError = true;
-        errorText = Tr.of(context).PhoneCodeHint;
-      });
-    } else if ((tfaType == 2 || tfaType == 4 || tfaType == 5 || tfaType == 6) && _ecodeCtr.text.isEmpty) {
-      setState(() {
-        isError = true;
-        errorText = Tr.of(context).EmailCodeHint;
-      });
+     if ((tfaType == 1 || tfaType == 3 || tfaType == 5 || tfaType == 6) && _codeCtr.text.isEmpty) {
+    setState(() {
+    isError = true;
+    errorText = Tr.of(context).PhoneCodeHint;
+    });
+    } else if ((tfaType == 2 || tfaType == 4 ) && _ecodeCtr.text.isEmpty) {
+    setState(() {
+    isError = true;
+    errorText = Tr.of(context).EmailCodeHint;
+    });
     } else if (_gcodeCtr.text.isEmpty) {
       setState(() {
         isError = true;

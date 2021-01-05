@@ -295,22 +295,22 @@ class _BindWeChatPageState extends State<BindWeChatPage> {
         isError = true;
         errorText = Tr.of(context).c2cEnterNumberHint;
       });
-    }   else if ((tfaType == 3 || tfaType == 4 || tfaType == 5 || tfaType == 7) && _gcodeCtr.text.isEmpty) {
-      setState(() {
-        isError = true;
-        errorText = Tr.of(context).GoogleCodeHint;
-      });
     } else if ((tfaType == 1 || tfaType == 3 || tfaType == 5 || tfaType == 6) && _codeCtr.text.isEmpty) {
       setState(() {
         isError = true;
         errorText = Tr.of(context).PhoneCodeHint;
       });
-    } else if ((tfaType == 2 || tfaType == 4 || tfaType == 5 || tfaType == 6) && _ecodeCtr.text.isEmpty) {
+    } else if ((tfaType == 2 || tfaType == 4 ) && _ecodeCtr.text.isEmpty) {
       setState(() {
         isError = true;
         errorText = Tr.of(context).EmailCodeHint;
       });
-    } else {
+    } else if ((tfaType == 7 ) && _gcodeCtr.text.isEmpty) {
+      setState(() {
+        isError = true;
+        errorText = Tr.of(context).GoogleCodeHint;
+      });
+    }  else {
       setState(() {
         isLoading = false;
         errorText = '';

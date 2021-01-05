@@ -113,7 +113,9 @@ class _VertifyStatusPageState extends State<VertifyStatusPage> {
              Visibility(child:  MyButton(
                text: Tr.of(context).CertificationAgain,
                onPressed: () => Routers.push(context, MineRouter.auth1),
-             ),visible: model.kycInfo?.kycStatus != 1&&model.kycInfo?.kycStatus != 2,)
+
+            ),visible: model.kycInfo?.kycStatus != 1&&model.kycInfo?.kycStatus != 2,)
+         // ),visible: true)
             ]),
           );
         },

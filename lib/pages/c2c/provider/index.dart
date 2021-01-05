@@ -17,7 +17,7 @@ class C2cProvider extends ViewStateModel {
   List<BankBindDetailModel> bankBindDetailModel;
   void setCoinsList(List<C2cCoinsModel> params) {
     paymentInfo = params;
-    print("paymentInfo $paymentInfo");
+ //   print("paymentInfo $paymentInfo");
     notifyListeners();
   }
   void getCoinsList() async {
@@ -34,7 +34,7 @@ class C2cProvider extends ViewStateModel {
 
   void setC2cCurrencyList(List<C2cCurrencyModel> params) {
     c2cCurrencyModel = params;
-    print("c2cCurrencyModel $c2cCurrencyModel");
+   // print("c2cCurrencyModel $c2cCurrencyModel");
     notifyListeners();
   }
   void getC2cCurrencyList() async {
@@ -50,7 +50,7 @@ class C2cProvider extends ViewStateModel {
   }
   void setC2cOrderDetail(c2cOrderlDetailModel params) {
     C2cOrderlDetailModel = params;
-    print("c2cOrderlDetailModel $C2cOrderlDetailModel");
+    //print("c2cOrderlDetailModel $C2cOrderlDetailModel");
     notifyListeners();
   }
   void getC2cOrderDetail(id,) async {

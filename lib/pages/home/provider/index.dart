@@ -26,7 +26,7 @@ class HomeProvider extends ViewStateModel {
     setBusy();
     try {
       var res = await HomeServer.getNotices();
-      print(res);
+     // print(res);
       setIdle();
       notices = (res['data'] as List).map((e) => NoticesModel.fromJson(e)).toList();
       notifyListeners();

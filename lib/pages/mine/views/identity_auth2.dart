@@ -215,7 +215,9 @@ class _IdentityAuth2PageState extends State<IdentityAuth2Page> {
       });
       Toast.showText("已提交,请等待审核");
       model.getUserInfo();
-      Routers.push(context, MineRouter.mine, clearStack: true, replace: true);
+      Routers.goBack(context);
+
+      //  Routers.push(context, MineRouter.mine, clearStack: true, replace: true);
     }
   }
 

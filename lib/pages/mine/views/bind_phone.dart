@@ -15,6 +15,7 @@ import 'package:HBit/common/input/focus.dart';
 import 'package:HBit/common/toast/index.dart';
 import 'package:HBit/common/verivication/vertify_form.dart';
 import 'package:HBit/core/model/tfa_type_model.dart';
+import 'package:HBit/pages/login/routes/index.dart';
 import 'package:HBit/pages/login/server/index.dart';
 import 'package:HBit/pages/login/widgets/text_input.dart';
 import 'package:HBit/pages/mine/provider/mine_provider.dart';
@@ -51,7 +52,7 @@ class _BindPhonePageState extends State<BindPhonePage> {
   bool isLoading = false;
 
   TfaTypeModel tfaType;
-
+  String area = '886';
   @override
   void initState() {
     super.initState();
@@ -88,7 +89,7 @@ class _BindPhonePageState extends State<BindPhonePage> {
                   focusNode: _mobileFocus,
                   hintText: Tr.of(context).phoneNumber,
                   controller: _mobileCtr,
-                  prefixIconConstraintsMaxWidth: 100,
+                  prefixIconConstraintsMaxWidth: 120,
                   prefixIconConstraintsMinWidth: 100,
                   prefixIconConstraintsMinHeight: 100,
                   prefixIconConstraintsMaxHeight: 100,
@@ -98,10 +99,23 @@ class _BindPhonePageState extends State<BindPhonePage> {
                     alignment: Alignment.centerLeft,
                     child: Row(
                       children: <Widget>[
-                        Text(
-                          '+86',
-                          style: TextStyle(color: Colors.black),
-                        ),
+                       GestureDetector(
+                         child:  Text(
+                           '+${area}',
+                           style: TextStyle(color: Colors.black),
+                         ),
+                         onTap: (){
+                           Navigator.pushNamed(context, LoginRouter.country)
+                               .then(( value) {
+
+                             setState(() {
+                               List  myList =value;
+                               area = myList[1];
+                             });
+
+                           });
+                         },
+                       ),
                         Icon(Icons.arrow_drop_down, size: sp(38), color: Color(0xffcccccc))
                       ],
                     ),
@@ -182,7 +196,7 @@ class _BindPhonePageState extends State<BindPhonePage> {
 
       Toast.showLoading('loading...');
       try {
-        await MineServer.bindMobile('86', _mobileCtr.text, _ecodeCtr.text, _codeCtr.text, _gcodeCtr.text);
+        await MineServer.bindMobile(area, _mobileCtr.text, _ecodeCtr.text, _codeCtr.text, _gcodeCtr.text);
         Toast.showText(Tr.of(context).BindingSubmitte);
         _mobileCtr.text = '';
         _ecodeCtr.text = '';
@@ -204,7 +218,7 @@ class _BindPhonePageState extends State<BindPhonePage> {
     } else {
       try {
         if (type == 'sms') {
-          await LoginServer.sms('', _mobileCtr.text);
+          await LoginServer.sms(area, _mobileCtr.text);
           return Future.value(true);
         } else {
           await LoginServer.email(_mobileCtr.text);
